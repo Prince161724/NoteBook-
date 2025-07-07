@@ -3,7 +3,7 @@ import nextContext from '../context/notes/noteContext';
 import Notes from './Notes'
 const Addnote = () => {
     const Context=useContext(nextContext);
-    const {addnote,setNote,note,handleclick}=Context;
+    const {addnote,setNote,note,handleclick,Showalert,alert}=Context;
     
     const onChange=(e)=>{
         setNote({...note,[e.target.name]:e.target.value})
@@ -25,7 +25,9 @@ const Addnote = () => {
                     <label htmlFor="exampleInputPassword1">Tag</label>
                     <input type="text" className="form-control" id="tag" placeholder="tag" name="tag" onChange={onChange} value={note.tag}/>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleclick}>Add Note</button>
+                <button type="submit" className="btn btn-primary" onClick={(e)=>{handleclick(e);
+                    Showalert("Note Added Successfully")
+                }}>Add Note</button>
             </form>
         </div>
         

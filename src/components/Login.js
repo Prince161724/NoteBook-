@@ -1,9 +1,12 @@
-import React,{useState} from 'react';
-import {useNavigate } from "react-router-dom";
+import React,{useState,useContext} from 'react';
+import {useNavigate} from 'react-router-dom';
+import noteContext from '../context/notes/noteContext';
 const host = "http://localhost:5000";
 
 const Login=()=>{
-    const history=useNavigate ();
+  
+    let history=useNavigate();
+    const {alert,Showalert,setToken}=useContext(noteContext);
     const [details,setDetails]=useState({email:"",password:""});
     const onChange=(e)=>{
     setDetails({ ...details, [e.target.name]: e.target.value });
@@ -14,23 +17,28 @@ const handleclick=async (e)=>{
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'authenticationtoken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWYyZWIxNTg0MzhjNmUzOTUxN2IzMSIsImlhdCI6MTc1MTA2OTE0N30.EjjnWS10-6B-px0ty9jwJtpRMtWe5IRstr7EsTmpCVI'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(details)
     });
     const json = await response.json();
     console.log("Edit response:", json);
     if(json){
+      console.log("Token = "+localStorage.getItem('token'));
         localStorage.setItem('token', json.authenticationtoken);
-        const token = localStorage.getItem('token');
-        //console.log(token);
+        if(json.authenticationtoken){
         history("/Home");
+        Showalert("Logged in Successfully");
+        setToken(json.authenticationtoken);
+      }
     }
     }
     return(<>
-        <div className="container">
+        <div className="container" style={{ marginTop: "50px" }}>
+          
     <form>
+      <h1 style={{marginBottom: "100px",marginLeft: "350px" }}>Login Form</h1>
+
   <div className="form-group">
     <label htmlFor="email">Email address</label>
     <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" onChange={onChange}

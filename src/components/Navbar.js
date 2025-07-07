@@ -1,7 +1,21 @@
-import React,{useEffect} from 'react';
-import {Link,useLocation} from "react-router-dom";
+import React,{useEffect,useContext} from 'react';
+import nextContext from '../context/notes/noteContext';
+import {Link,useLocation,useNavigate} from "react-router-dom";
 const Navbar=()=>{
+  const history=useNavigate();
+  const onClick=()=>{
+    localStorage.removeItem('token');
+    setToken(null);
+    history("/");
+  }
+  const onClick2=()=>{
+    history("/Signup")
+  }
+  const onClick3=()=>{
+    history("/")
+  }
   let location=useLocation();
+  const {token,setToken}=useContext(nextContext);
     return(
       <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,9 +34,8 @@ const Navbar=()=>{
       </li>
     </ul>
     <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <a className="btn btn-primary mx-2" href="#" role="button">Log-In</a>
-      <a className="btn btn-primary mx-2" href="#" role="button">Sign-Up</a>
+      {(!token)?<a className="btn btn-primary mx-2" href="#" role="button" onClick={onClick3}>Log-In</a>:<a className="btn btn-primary mx-2" href="#" role="button" onClick={onClick}>Log-Out</a>}
+      {!token && <a className="btn btn-primary mx-2" href="#" role="button" onClick={onClick2}>Sign-Up</a>}
     </form>
   </div>
 </nav>

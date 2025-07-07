@@ -3,7 +3,7 @@ import nextContext from '../context/notes/noteContext';
 const host = "http://localhost:5000";
 const NoteItem = (props) => {
   const Context=useContext(nextContext);
-  const {Notes2,setNotes}=Context;
+  const {Notes2,setNotes,Showalert,alert}=Context;
   const {updatenote}=props;
     const { title, description, _id,tag} = props.note;
     let { Deletenote,note } = props; 
@@ -39,7 +39,7 @@ const NoteItem = (props) => {
                           className="fa-solid fa-trash mx-2"
                           onClick={() => {
                             Deletenote(_id);
-                            
+                            Showalert("Note Deleted SuccessFully")
                           }}
                         ></i>
 

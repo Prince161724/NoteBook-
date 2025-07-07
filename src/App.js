@@ -19,13 +19,15 @@ function App() {
     <NoteState>
       <BrowserRouter>
     <Navbar/>
-      <Alert message="This is INoteBook"/>
+      <Alert/>
+      <div>
     <Routes>
   <Route path="/Home" element={<Home />} />
   <Route path="/" element={<Login />} />
   <Route path="/Signup" element={<Signup/>} />
   <Route path="/about" element={<About />} />
 </Routes>
+</div>
 
     </BrowserRouter>
     </NoteState>

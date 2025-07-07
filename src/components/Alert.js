@@ -1,10 +1,12 @@
-import React from 'react'
+import React ,{useContext} from 'react'
+import noteContext from '../context/notes/noteContext';
 
 const Alert=(props)=>{
+    console.log("Alert is Being activated")
+    const {alert,Showalert}=useContext(noteContext);
     return(
-        <><div className="alert alert-primary" role="alert">A simple primary alert—check it out!
-        {props.message}
-</div>
+        <>{alert && <div className="alert alert-primary" role="alert" >{alert}
+</div>}
         </>
     )
 }
