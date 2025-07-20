@@ -7,6 +7,10 @@ const app=express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/check', (req, res) => {
+  console.log("Someone hit /check route 🚀");
+  res.send("Hello from backend!");
+});
 app.use('/api/auth',require('./routes/auth.js'));
 app.use('/api/notes',require('./routes/notes.js'));
 
