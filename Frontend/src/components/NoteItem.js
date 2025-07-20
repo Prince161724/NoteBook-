@@ -1,6 +1,6 @@
 import React,{useContext,useRef} from 'react';
 import nextContext from '../context/notes/noteContext';
-const host = "http://localhost:5000";
+const host = "https://backend-6n6r.onrender.com";
 const NoteItem = (props) => {
   const Context=useContext(nextContext);
   const {Notes2,setNote,Showalert,alert,fetchnotes,setNotes}=Context;

@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import noteContext from '../context/notes/noteContext';
-const host = "http://localhost:5000";
+const host = "https://backend-6n6r.onrender.com";
 
 const Login=()=>{
   
