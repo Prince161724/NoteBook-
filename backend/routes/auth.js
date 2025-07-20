@@ -38,7 +38,6 @@ router.post('/createuser', [
     let payload = {
         id: user2.id
     }
-    console.log("Check that is payload is same as = " + payload.id);
     const authenticationtoken = jst.sign(payload, secretkey);
     console.log(authenticationtoken);
     return res.json({ user: user2, authenticationtoken });

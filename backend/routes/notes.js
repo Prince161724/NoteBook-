@@ -38,7 +38,6 @@ router.post(
         tag,
         user: req.user
       });
-      console.log("user = " + req.user);
 
       const savedNote = await newNote.save();
       res.json(savedNote.id);
@@ -55,9 +54,6 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
   try {
     // Find the note to update
     const note = await Notes.findById(req.params.id);
-    console.log("note = " + req.params.id);
-
-    console.log("note = " + note._id);
     if (!note) {
       return res.status(404).send("Note not found");
     }
@@ -65,8 +61,6 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
     if (note._id.toString() !== req.params.id) {
       return res.status(401).send("Helped");
     }
-
-
     // Create new updated object
     const newNote = {};
     if (title) newNote.title = title;
@@ -87,21 +81,23 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
 router.delete('/deleteNote/:id', fetchuser, async (req, res) => {
   try {
     const note = await Notes.findById(req.params.id);
+    console.log("req.params.id = ",req.params.id);
+    //console.log(note);
     if (!note) {
       return res.status(404).send("Note not found");
     }
-
     // Allow delete only if user owns this note
     console.log("Going");
     if (note._id.toString() !== req.params.id) {
-      return res.status(401).send("Not Authorized");
+      return res.status(401).send("NOt Same Note");
     }
 
     await Notes.findByIdAndDelete(req.params.id);
     res.json({ success: "Note has been deleted", note: note });
+    console.log("All right till here Dont Worry");
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send("Cant fetch");
   }
 });
 
