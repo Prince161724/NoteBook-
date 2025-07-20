@@ -30,7 +30,7 @@ router.post('/createuser', [
         password: Secpass
     })
         .catch(err => {
-            ////console.log(err);
+            //////console.log(err);
             res.json({ error: err.message });
             res.json({ error: "This Name Already Exists" });
         })
@@ -39,7 +39,7 @@ router.post('/createuser', [
         id: user2.id
     }
     const authenticationtoken = jst.sign(payload, secretkey);
-    console.log(authenticationtoken);
+    //console.log(authenticationtoken);
     return res.json({ user: user2, authenticationtoken });
 
 })
@@ -59,7 +59,7 @@ router.post('/login', [
 
     try {
         let user = await User.findOne({ email: email });
-        console.log(user);
+        //console.log(user);
         if (!user) {
             return res.status(400).json({ error: "The credentials are wrong" });
         }

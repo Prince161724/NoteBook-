@@ -12,5 +12,5 @@ app.use('/api/notes',require('./routes/notes.js'));
 
 
 app.listen(5000, () => {
-  //console.log("INoteBook backend at http://localhost:5000");
+  console.log("INoteBook backend at http://localhost:5000");
 });

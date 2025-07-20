@@ -8,7 +8,7 @@ const fetchuser = (req, res, next) => {
     }
     try {
         const userverification = jst.verify(token, secretkey);
-        //console.log(userverification);
+        ////console.log(userverification);
         if (userverification) {
             req.user = userverification.id;
         }
