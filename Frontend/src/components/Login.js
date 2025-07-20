@@ -22,9 +22,9 @@ const handleclick=async (e)=>{
       body: JSON.stringify(details)
     });
     const json = await response.json();
-    console.log("Edit response:", json);
+    //console.log("Edit response:", json);
     if(json){
-      console.log("Token = "+localStorage.getItem('token'));
+      //console.log("Token = "+localStorage.getItem('token'));
         localStorage.setItem('token', json.authenticationtoken);
         if(json.authenticationtoken){
         history("/Home");

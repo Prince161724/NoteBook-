@@ -27,7 +27,7 @@ const NoteState = (props) => {
 
   // 🟡 Edit Note
   const Editnote = async (id, title, description, tag) => {
-    console.log("note Id to be edited is = ",id);
+    //console.log("note Id to be edited is = ",id);
     const url = `${host}/api/notes/updatenote/${id}`;
     const response = await fetch(url, {
       method: 'PUT',
@@ -48,7 +48,7 @@ const NoteState = (props) => {
   const handleclick = (e,title,description,tag) => {
     e.preventDefault();
     addnote(title, description, tag);
-    console.log("The title = ",title,"teh description to be Printed = ",description,"The tag To be Printed = ",tag)
+    //console.log("The title = ",title,"teh description to be Printed = ",description,"The tag To be Printed = ",tag)
     setNote({ title: "", description: "", tag: "" });
   }
   const handleclick2 = (note) => {
@@ -67,7 +67,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag })
     });
     const json = await response.json();
-    console.log("Added Note response:", json);
+    //console.log("Added Note response:", json);
 
 
     const newNote = {
@@ -90,7 +90,7 @@ const NoteState = (props) => {
       }
     });
     const json = await response.json();
-    console.log("Fetch Notes");
+    //console.log("Fetch Notes");
     setNotes(json);
   };
 

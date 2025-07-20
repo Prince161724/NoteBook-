@@ -23,11 +23,11 @@ const Signup = () => {
 
     });
     const json = await response.json();
-    console.log(json);
+    //console.log(json);
     if (!json.error) {
       localStorage.setItem('token', json.authenticationtoken);
       const token = localStorage.getItem('token');
-      console.log(token);
+      //console.log(token);
       history("/Home");
       Showalert("Signed in Successfully");
     }

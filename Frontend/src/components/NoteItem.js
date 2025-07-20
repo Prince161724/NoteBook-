@@ -11,14 +11,14 @@ const NoteItem = (props) => {
     
     const ref=useRef(null);
     const updatenote2 = (note) => {
-    console.log("Notes =c",note);
+    //console.log("Notes =c",note);
     note.id?Deletenote(note.id):Deletenote(note._id);
-        console.log("Note to be deleted = ",id);
+        //console.log("Note to be deleted = ",id);
     }
-        console.log("Its being Printed");
+        //console.log("Its being Printed");
     //Delete the Note
     const Deletenote = async (id) => {
-      console.log("id To be deleted = ",id)
+      //console.log("id To be deleted = ",id)
     const url = `${host}/api/notes/deleteNote/${id}`;
     const response = await fetch(url, {
       method: 'DELETE',
@@ -29,7 +29,7 @@ const NoteItem = (props) => {
       body: JSON.stringify({id})
     });
     const json = await response.json();
-    console.log("Deleted response:", json);
+    //console.log("Deleted response:", json);
     const newNotes = Notes2.filter(note => note.id !== id);
     setNotes(newNotes);
     fetchnotes();
